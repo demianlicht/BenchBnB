@@ -19,6 +19,8 @@ export const login = user => dispatch => {
     .fail(xhr => dispatch(receiveErrors(xhr.responseJSON)));
 };
 
+window.login = login;
+
 export const logout = () => dispatch => {
   APIUtil.logout()
     .then(() => dispatch(receiveCurrentUser(null)))
