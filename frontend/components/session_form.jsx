@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -13,8 +14,8 @@ class SessionForm extends React.Component {
       this.redirect = this.redirect.bind(this);
   }
 
-  componentDidMount() {
-    if(this.props.loggedIn) { this.redirect(); }
+  componentWillReceiveProps(newProps) {
+    if(this.newProps.loggedIn) { this.redirect(); }
   }
 
   updateUsername(e) {
@@ -32,12 +33,12 @@ class SessionForm extends React.Component {
   }
 
   redirect() {
-    
+    this.props.router.push('/');
   }
 
   render() {
     const submitText = () => {
-      if(this.props.formType === 'login') {
+      if(this.props.formType === '/login') {
         return 'Log in';
       } else {
         return 'Sign up';
@@ -58,7 +59,7 @@ class SessionForm extends React.Component {
         <label>
           Password:
           <input
-            type='text'
+            type='password'
             value={this.state.password}
             onChange={this.updatePassword} />
         </label><br />
@@ -67,3 +68,5 @@ class SessionForm extends React.Component {
     );
   }
 }
+
+export default withRouter(SessionForm);

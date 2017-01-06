@@ -14,7 +14,7 @@ export const receiveErrors = errors => ({
 });
 
 export const login = user => dispatch => {
-  APIUtil.login(user)
+  return APIUtil.login(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)))
     .fail(xhr => dispatch(receiveErrors(xhr.responseJSON)));
 };
@@ -22,13 +22,13 @@ export const login = user => dispatch => {
 window.login = login;
 
 export const logout = () => dispatch => {
-  APIUtil.logout()
+  return APIUtil.logout()
     .then(() => dispatch(receiveCurrentUser(null)))
     .fail(xhr => dispatch(receiveErrors(xhr.responseJSON)));
 };
 
 export const signup = user => dispatch => {
-  APIUtil.signup(user)
+  return APIUtil.signup(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)))
     .fail(xhr => dispatch(receiveErrors(xhr.responseJSON)));
 };
