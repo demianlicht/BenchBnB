@@ -14,8 +14,8 @@ class SessionForm extends React.Component {
       this.redirect = this.redirect.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    if(this.newProps.loggedIn) { this.redirect(); }
+  componentDidMount() {
+    if(this.props.loggedIn) { this.redirect(); }
   }
 
   updateUsername(e) {
