@@ -9,3 +9,5 @@ const benchesReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export default benchesReducer;

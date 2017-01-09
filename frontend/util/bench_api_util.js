@@ -1,7 +1,7 @@
 export const fetchBenches = () => (
   $.ajax({
     method: 'GET',
-    url: '/benches',
+    url: '/api/benches',
     error: (err) => console.log(err)
   })
 );
