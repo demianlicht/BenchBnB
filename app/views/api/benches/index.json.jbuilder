@@ -1,4 +1,4 @@
-json.benches @benches do |bench|
+@benches.each do |bench|
   json.set! bench.id do
     json.description bench.description
     json.lat bench.lat
