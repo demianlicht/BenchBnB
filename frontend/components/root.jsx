@@ -5,12 +5,24 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import SessionFormContainer from './session_form_container';
 import App from './app';
 
+const _redirectIfLoggedIn = (nextState, replace, asyncDoneCallback) => {
+  if (window.currentUser) {
+    replace('/');
+  }
+};
+
 const Root = ({ store }) => (
   <Provider store={ store }>
     <Router history={ hashHistory }>
       <Route path='/' component={ App }>
-        <Route path="/login" component={ SessionFormContainer } />
-        <Route path="/signup" component={ SessionFormContainer } />
+        <Route
+          path="/login"
+          component={ SessionFormContainer }
+          onEnter={ _redirectIfLoggedIn } />
+        <Route
+          path="/signup"
+          component={ SessionFormContainer }
+          onEnter={ _redirectIfLoggedIn } />
       </Route>
     </Router>
   </Provider>
