@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import SessionFormContainer from './session_form_container';
-import BenchIndexContainer from './benches/bench_index_container';
+import SearchContainer from './map/search_container';
 import App from './app';
 
 const _redirectIfLoggedIn = (nextState, replace, asyncDoneCallback) => {
@@ -16,7 +16,7 @@ const Root = ({ store }) => (
   <Provider store={ store }>
     <Router history={ hashHistory }>
       <Route path='/' component={ App }>
-        <IndexRoute component={ BenchIndexContainer } />
+        <IndexRoute component={ SearchContainer } />
         <Route
           path="/login"
           component={ SessionFormContainer }
